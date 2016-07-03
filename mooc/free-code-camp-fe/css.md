@@ -23,10 +23,20 @@
 ```
 
 - override
- 1. !important (다른 CSS lib와 충돌할때 사용) `color: red !important`
- 2. inline `<h1 style='color: red'`>
+ 1. !important (다른 CSS lib와 충돌할때 사용) `.text-red { color: red !important }`
+ 2. inline `<h1 style='color: red'>`
  3. class보다는 id가 우선 적용
  4. 같은 class이면 CSS파일 아래쪽이 적용
 
 ## RGB
- - #000000 == #00 == rgb(0,0,0) == black
+ - #000000 == #000 == rgb(0,0,0) == black
+
+## Font 추가
+```
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<style>
+  h2 {
+    font-family: Lobster, Monospace;
+  }
+</style>
+```

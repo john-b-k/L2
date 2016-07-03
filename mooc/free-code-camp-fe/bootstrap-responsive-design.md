@@ -105,8 +105,8 @@ ex : `<button class='btn btn-block btn-danger'>DELETE</button> //red delete 버�
 
 ## bootstrap grid system
 - Overview  
-bootstrap 은 화면을 **12개 column** 으로 나눠서 반응형 design활용을 제공한다
-적용시킬 tag들 위에 `<div class='row'>` 와 `<div class='col-xs-3 col-md-7'>` 을  **wrapping** 하여 활용.
+bootstrap 은 화면을 **12개 column** 으로 나눠서 반응형 design활용을 제공한다.  
+적용시킬 tag들 위에 `<div class='row'>` (1개)와 `<div class='col-xs-3 col-md-7'>` (n<=12개) 을  **wrapping** 하여 활용.
 - `div .col-xs-*` : '\*'는 12개 column 중에 몇 column을 차지할지 *element size* 설정.
 - `div .row` 와 `div .col-xs-*` 을 이용하면 elements들을 __inline__ 으로 세팅할수 있다.  
 ex : h2와 img를 inline 시킴

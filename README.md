@@ -1,0 +1,3 @@
+# L2 is __L__earning __L__og.
+
+## From __Mooc Lectures__ or __Books__ or __Troubleshootins__ ...

@@ -83,7 +83,7 @@
 ```
 
 ## bootstarp framework import
-1. 직접 CSS JS 파일 등을 다운로드 해서 내 web project에 important
+1. 직접 CSS JS 파일 등을 다운로드 해서 내 web project에 import.
 2. bootstrap CND : `<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>` 이용  
 <br/>
 참고 [link](http://bootstrapk.com/getting-started/)
@@ -128,8 +128,7 @@ ex : h2와 img를 inline 시킴
 
 ## FontAwesome  (awesome icon lib!)
 - 시작  
-  - CDN :
-<script src="https://use.fontawesome.com/345c86fd0f.js"></script>
+  - CDN : `<script src="https://use.fontawesome.com/345c86fd0f.js"></script>`
   - download and embed css`<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 `
   - bootstrap maxcdn : `<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>`

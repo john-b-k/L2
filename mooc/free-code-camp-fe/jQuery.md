@@ -83,4 +83,4 @@ $('.well').addClass('animated shake');
 ## HTML elements의 inherits property 이용
 - `$('#left-well').parent().css('color','orange');`
 - `$('#right-well').children().css('background-color','red');`
-- `$('.target:nth-child(3)').addClass('animated bounce');`
+- `$('.col-xs-6 div .target:nth-child(3)').addClass('animated bounce');`  :  .target(들)의 __부모__ 의 3째 *자식*

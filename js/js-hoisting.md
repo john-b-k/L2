@@ -76,7 +76,7 @@ function example(){
 
 
 Ex2)  
-```
+```Javascript
 var name = "global";
 function testHoisting(){
   console.log(name);
@@ -87,7 +87,7 @@ function testHoisting(){
 'global' , 'local'로 예상되지만..  위 코드는 아래와 같이 Hoisting 됨.  
 *Hoisting때문에* global name 은 local name scope 변수에의해 **shadowing** 됨.  
 
-```
+```Javascript
 var name = 'global';
 function testHoisting(){
   var name; //undefined할당

@@ -4,7 +4,7 @@
 
 ## Emmet Syntax 문법
 - `div.container>a>{hello}`  + tab키
-```
+```html
 <div class='container'>
     <a href=''>hello</a>
 </div>

@@ -1,7 +1,7 @@
 # FreeCodeCamp Bootstrap 강의정리
 
 ## 최종결과 코드
-```
+```html
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
@@ -110,7 +110,7 @@ bootstrap 은 화면을 **12개 column** 으로 나눠서 반응형 design활용
 - `div .col-xs-*` : '\*'는 12개 column 중에 몇 column을 차지할지 *element size* 설정.
 - `div .row` 와 `div .col-xs-*` 을 이용하면 elements들을 __inline__ 으로 세팅할수 있다.  
 ex : h2와 img를 inline 시킴
-```
+```html
 <div class="row">
     <div class="col-xs-8">
       <h2>CatPhotoApp</h2>
@@ -134,7 +134,7 @@ ex : h2와 img를 inline 시킴
   - bootstrap maxcdn : `<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>`
 
 - 활용  
-```
+```html
 <button class="btn btn-block btn-primary">
     <i class="fa fa-thumbs-up"></i> Like
 </button>

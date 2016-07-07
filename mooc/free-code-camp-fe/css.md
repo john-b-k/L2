@@ -8,7 +8,7 @@
 ## CSS inheirachy & override
 - Browser는 CSS의 아래 영역을 우선.
   아래 코드는 빨간색 HI.
-```
+```html
 <style>
 .text-pink{
   color: pink;
@@ -32,7 +32,7 @@
  - #000000 == #000 == rgb(0,0,0) == black
 
 ## Font 추가
-```
+```html
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
 <style>
   h2 {

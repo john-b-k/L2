@@ -2,7 +2,7 @@
 
 ## Form Tag
 - Browser가 Server에 사용자의 입력값을 보냄.
-```
+```html
 <form action='/serverAddr'>
     <input type='text' placeholder='Text Before User Input' required>
 

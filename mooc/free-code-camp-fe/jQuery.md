@@ -1,7 +1,7 @@
 # 기본 jQuery 를 이용한 HTML elements handling
 
 ## Complete code
-```
+```html
 <head>
   <link rel='stylesheet' href='http://s.mlcdn.co/animate.css'>
 </head>

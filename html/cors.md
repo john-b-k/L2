@@ -2,6 +2,12 @@
 
 ### 개요
 
+HTTP 요청은 기본적으로 Cross-Site HTTP Requests가 가능하다.
+
+다시 말하면, <img> 태그로 다른 도메인의 이미지 파일을 가져오거나, <link> 태그로 다른 도메인의 CSS를 가져오거나, <script> 태그로 다른 도메인의 JavaScript 라이브러리를 가져오는 것이 모두 가능하다.
+
+하지만 <script></script>로 둘러싸여 있는 스크립트에서 생성된 Cross-Site HTTP Requests는 Same Origin Policy를 적용 받기 때문에 Cross-Site HTTP Requests가 불가능하다.
+
 - CORS는 W3C스펙, BROWSER의 Cross Domain Communication 허용을 위한.
 - XMLHttpRequest객체를 개발자가 same-domain request롤 활용할 수 있게 허용.(same-origin policy 회피)
 

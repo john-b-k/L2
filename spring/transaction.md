@@ -96,7 +96,7 @@ transactional proxies를 기반으로 동작
     디폼트 는 false : inferface-based proxy 생성  
              true : class-based proxy 생성  
              스프링 프록시관련 링크[link](http://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/aop.html#aop-proxying)
-  2. mode : default value is 'proxy'
+  2. mode : default value is 'proxy'(프록시로 트랙젝션 관리) , 'aspectj' 이면 weaving-based aop 로 트랜젝션 관리
 
 
 ##### - 리스너 사용(트랜젝션 트래킹)
@@ -114,3 +114,8 @@ public class MyComponent {
     }
 }
 ```
+
+##### 주의 사항
+1. proxy 모드 에서는 ```@Transactional``` 이 되있더라도 인터셉트 되지 않는다. 즉 타겟 객체에서 self-invokation된 메서드는 트랜젝션 처리 않됨.
+2. proxy가 생성될때 완전히 초기화가 이루어짐. ```@PostConstruct``` 를 의존한 초기화 코드 작성하면 안된다.
+3. Method Visility : 오직 ```public``` 메서드 에만 ```@Transactional``` 이 적용됨. non-public에 적용하려면 ```mode=aspectj```를 이용해야함 load time weaving일어남 (Target Object 의 바이트코드 변경일어남)

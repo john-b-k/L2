@@ -16,4 +16,101 @@
 
 
 #### - 스프링에서 제공하는 트랜젝션 관리자.(인터페이스 / 구현체)
-  [!alt tag](../txMaganers.jpg?raw=true)
+  <img src='./txManagers.png'>
+
+
+## Programatic 트랜젝션 관리
+1. PlatformTransactionManager 직접구현. (DataSourceTransactionManager)
+2. TransactionTemplate 사용 -> 더 선호
+
+
+why? : DataSourceTransactionManager를 사용하면 명시적으로 트랜젝션 시작, 커밋, 롤백 해야함. Application Code가 POJO스럽지 않고 Spring noise가 많이 들어간다.
+따라서 DataSourceTransactionManager 를 랩핑해서 한 단계 추상화된 TransactionTemplate를 선호함.
+
+
+##### - 빈 구성  
+
+```
+<bean id="dataSource" class="...XXXDataSource"/>
+
+<bean id="txManager" class="...DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource"/>
+</bean>
+
+<bean id=transactionTemplate"
+  class="...TransactionTemplate">
+  <property name="transactionManager" ref="txManger"/>
+  <property name="isolationLevelName" value="ISOLATION_READ_COMMITED"/>  //격리와 전파는TransactionDefinition에서 정의된 값.
+  <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+```
+
+##### - 코드 예제  
+```java
+@Autowired
+private TransactionTemplate transactionTemplate;
+
+@override // 계죄에서 예금 인출 + 정기예금에 불입 : 1 트랜텍션
+public int createFixedDeposit(final FixedDepositDetails fixedDepositDetails){
+  transactionTemplate.execute(new TransactionCallback<FixedDepositDetails>(){
+    //트랜젝션 템픗릿이 호출하는 메서드
+    public FixedDepositDetails doInTransaction(TransactionStatus status){
+      try{
+        myFixedDepositDao.createFixedDeposit(fixedDepositDetails);
+        bankAccountDao.subtract(
+                                fixedDepositDetails.getBankAccId(),
+                                fixedDepositDetails.getFixedDepositAmount());
+      }catch(RuntimeException){
+        //롤백
+        status.setRollbackOnly();
+      }
+      return fixedDepositDetails.getFixedDepositId();
+    }
+  });
+}
+
+//리턴밧 필요없으면 TransactionCallbackWithoutResult 사용
+```
+
+
+## Declarative 트랜젝션 관리
+transactional proxies를 기반으로 동작
+1. <aop: >  , <tx: >를 기반으로 하는 설정
+2. ```@Transactional``` 를 이용.
+ - 장점 : 이방식을 사용하면 비즈니스로직와 트랜젝션 관리 로직이 분리 된다.
+
+ ```@Transactional``` 이용하기 위한 설정
+```
+<tx:annotation-driven transaction-manager="txManager"/><!-- a PlatformTransactionManager is still required -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- (this dependency is defined somewhere else) -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+```
+혹은 어노테이션 기반으로
+```java
+@Configuration 클래스에 @EnableTransactionManagement  추가하면됨
+```
+
+##### - @Transactional 의 프로퍼티
+  1. proxy-target-class
+    디폼트 는 false : inferface-based proxy 생성  
+             true : class-based proxy 생성  
+             스프링 프록시관련 링크[link](http://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/aop.html#aop-proxying)
+  2. mode : default value is 'proxy'
+
+
+##### - 리스너 사용(트랜젝션 트래킹)
+```@TransactionalEventListene ``` 를 사용하면
+BEFORE_COMMIT, AFTER_COMMIT (default), AFTER_ROLLBACK and AFTER_COMPLETION
+에 대해서 트래킹  
+
+```java
+@Component
+public class MyComponent {
+
+    @TransactionalEventListener
+    public void handleOrderCreatedEvent(CreationEvent<Order> creationEvent) {
+          ...
+    }
+}
+```

@@ -77,6 +77,10 @@ transactional proxies를 기반으로 동작
 1. <aop: >  , <tx: >를 기반으로 하는 설정
 2. ```@Transactional``` 를 이용.
  - 장점 : 이방식을 사용하면 비즈니스로직와 트랜젝션 관리 로직이 분리 된다.
+ - ```@Transactional```은 인터페이스, 클래스, 메서드에 사용가능하고, 클래스 인터페이스에 사용하면 전체적용됨.
+      거기에 추가적으로 메서드에 사용되면 재정의됨.
+ - ```java.lang.RuntimeException```이 발생하면 롤백이된다.
+
 
  ```@Transactional``` 이용하기 위한 설정
 ```

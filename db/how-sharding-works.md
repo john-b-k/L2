@@ -57,7 +57,7 @@
 
 <br/>
 ###### - Dynamic Sharding
- - 외부의 locator service(query router)가 entries 위치 지정함
+ - 외부의 locator service(query router)가 entries 위치 지정함  Look Up Service
  - SPOF가 될 수 있다. db operation은 모두 여기 거치니까(locator가 replicated 안되있으면...)
  - 여전히 relocate data는 어렵다. locator service도 변경해야하고 동시에 데이터 재배치도 해야하고..
 

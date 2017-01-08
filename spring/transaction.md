@@ -20,6 +20,7 @@
 
 
 ## Programatic 트랜젝션 관리
+(2가지방법))
 1. PlatformTransactionManager 직접구현. (DataSourceTransactionManager)
 2. TransactionTemplate 사용 -> 더 선호
 
@@ -74,11 +75,12 @@ public int createFixedDeposit(final FixedDepositDetails fixedDepositDetails){
 
 
 ## Declarative 트랜젝션 관리
-transactional proxies를 기반으로 동작
-1. <aop: >  , <tx: >를 기반으로 하는 설정
+transactional proxies를 기반으로 동작 (2가지방법)  
+
+1. \< aop: \>  , \< tx: \>를 기반으로 하는 설정
 2. ```@Transactional``` 를 이용.
  - 장점 : 이방식을 사용하면 비즈니스로직와 트랜젝션 관리 로직이 분리 된다.
- - ```@Transactional```은 인터페이스, 클래스, 메서드에 사용가능하고, 클래스 인터페이스에 사용하면 전체적용됨.
+ - ```@Transactional```은 인터페이스, 클래스, 메서드에 사용가능하고, 클래스 or 인터페이스에 사용하면 전체적용됨.
       거기에 추가적으로 메서드에 사용되면 재정의됨.
  - ```java.lang.RuntimeException```이 발생하면 롤백이된다.
 
@@ -121,6 +123,6 @@ public class MyComponent {
 ```
 
 ##### 주의 사항
-1. proxy 모드 에서는 ```@Transactional``` 이 되있더라도 인터셉트 되지 않는다. 즉 타겟 객체에서 self-invokation된 메서드는 트랜젝션 처리 않됨.
-2. proxy가 생성될때 완전히 초기화가 이루어짐. ```@PostConstruct``` 를 의존한 초기화 코드 작성하면 안된다.
+1. proxy 모드 에서는 ```@Transactional``` 이 되있더라도 Extrenal call 아니면 인터셉트 되지 않는다. 즉 타겟 객체에서 self-invokation된 메서드는 트랜젝션 처리 않됨.
+2. proxy가 생성될때 트랜젝션 관련한 것이 완전히 초기화가 이루어짐. ```@PostConstruct``` 를 의존한 초기화 코드 작성하면 안된다.
 3. Method Visility : 오직 ```public``` 메서드 에만 ```@Transactional``` 이 적용됨. non-public에 적용하려면 ```mode=aspectj```를 이용해야함 load time weaving일어남 (Target Object 의 바이트코드 변경일어남)

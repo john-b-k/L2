@@ -51,7 +51,7 @@ private TransactionTemplate transactionTemplate;
 
 @override // 계죄에서 예금 인출 + 정기예금에 불입 : 1 트랜텍션
 public int createFixedDeposit(final FixedDepositDetails fixedDepositDetails){
-  transactionTemplate.execute(new TransactionCallback<FixedDepositDetails>(){
+  FixedDepositDetails details = transactionTemplate.execute(new TransactionCallback<FixedDepositDetails>(){
     //트랜젝션 템픗릿이 호출하는 메서드
     public FixedDepositDetails doInTransaction(TransactionStatus status){
       try{
@@ -63,9 +63,10 @@ public int createFixedDeposit(final FixedDepositDetails fixedDepositDetails){
         //롤백
         status.setRollbackOnly();
       }
-      return fixedDepositDetails.getFixedDepositId();
+      return fixedDepositDetails;
     }
   });
+  return details.getFixedDepositId();
 }
 
 //리턴밧 필요없으면 TransactionCallbackWithoutResult 사용

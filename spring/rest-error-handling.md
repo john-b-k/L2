@@ -65,6 +65,9 @@ class GlobalErrorHanler extends ResponseEntityExceptionHandler {
 			MissingServletRequestPartException.class,
 			BindException.class
 		})
-	public final ResponseEntity<Object> handleException
+public final ResponseEntity<Object> handleException
 ```
 이 메서드가 제공되어서 ExceptionHandling을 해준다 -> tomcat html 에러 응답 안남
+
+
+[참고](http://www.baeldung.com/exception-handling-for-rest-with-spring#controlleradvice)

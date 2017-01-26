@@ -70,4 +70,9 @@ public final ResponseEntity<Object> handleException
 이 메서드가 제공되어서 ExceptionHandling을 해준다 -> tomcat html 에러 응답 안남
 
 
+#### Controller에서  BindingResult 없애기
+(참고)[https://gist.github.com/matsev/4519323]
+@ExceptionHandler에 MethodArgumentNotValidException 지정해 주면됨...  이런식으로 특정 Exception 잡아서 톰켓 Exception을 대체 할 수 있다 
+
+<br/>
 [참고](http://www.baeldung.com/exception-handling-for-rest-with-spring#controlleradvice)

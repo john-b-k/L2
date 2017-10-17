@@ -76,6 +76,7 @@
   2. fb 로그인 페이지(인가포인트)로 user-agent  이동(사용자 권한승인 위해) (domain : fb)  
 
   (3 ~ 4 authorization code (일회용) 받기)
+  
   3. 로그인 후 인가 승인하면, 302 응답 Location : goodapp.com/callback?code=123nb2&scope=...  (인가코드 응답) (domain : fb)
   4. 302 리다이렉션으로 user-agent(browser)가 goodapp.com/callback?code=dfadafd&... 형태로 goodapp 서버에 GET 요청보냄 (domain : goodapp)
 

@@ -13,11 +13,11 @@
   - 인가 : 인증된 후 어떤 일을 할 수 있는 권한이 있는지 판단. (OAuth2.0 은 인가프레임워크)
 
 
-  ##### 플레이어
+##### 플레이어
 
-  ###### - User(사용자)
-  ###### - Client(클라이언트, App, 사용자가 현재 사용하는 앱 혹은 웹)
-  ###### - Service Provider(서비스 제공자, 사용자의 보호된 리소스 가짐 ex Facebook)
+ ###### - User(사용자)
+ ###### - Client(클라이언트, App, 사용자가 현재 사용하는 앱 혹은 웹)
+ ###### - Service Provider(서비스 제공자, 사용자의 보호된 리소스 가짐 ex Facebook)
 
 <br/>
 
@@ -50,9 +50,9 @@
   - 서비스 제공자에서 토큰 발급후 클라이언트 앱에 전달하기위한 연결점
   - 서비스제공자 302 응답 -> 브라우저의 redirection 302, Location Header 를 통해 클라이언트에 전달
 - 인가 앤드 포인트 : api.facebook.com/auth
- - 토큰을 받기위해 서비스 제공자에 인가 받아야함 필요하다면 로그인, 그리고 사용자가 인가함.
+  - 토큰을 받기위해 서비스 제공자에 인가 받아야함 필요하다면 로그인, 그리고 사용자가 인가함.
 - 토큰 앤드 포인트 : api.facebook.com/token
- - 인가받은 후 토큰 발급 받기위한 연결점
+  - 인가받은 후 토큰 발급 받기위한 연결점
 
 <br/>
 
@@ -63,6 +63,7 @@
  1. `facebook 으로 로그인 버튼` Click (domain : goodapp)
  2. www.facebook.com/dialog/auth 로 브라우저 이동 (domain :fb)
     - 이동예 : html/js앱은 window.location.href = www.facebook.com/dialog/oauth?reponse_type=token&client_id=... 방식 사용
+ 
  3. 사용자 facebook 로그인 (domain : fb) 3에 의해서 사용자 비번은 goodapp은 알수없으로 안전
  4. goodapp 이 facebooek담벼락접근 합니다 허용 (domain : fb)
  5. fb 이 302 응답 -> 브라우저 goodapp.com/callback 으로 리다이렉션 (w/ token정보) (domain : goodapp)

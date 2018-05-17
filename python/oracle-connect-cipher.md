@@ -14,6 +14,9 @@ import os
 os.chdir(/User/my/Documents/projects/oracle/instantclient_12_2)
 import cx_Oracle
 
+import base64
+from Crypto.Cipher import AES
+
 # 오라클 접속 정보
 IP = '127.0.0.1'
 PORT = '1825'

@@ -4,6 +4,7 @@
 - `pip3 install cx_Oracle`
 - `Oracle Instant Client` 다운로드 및 설치 (오라클 공식 페이지에서)
   - 참고  : http://cx-oracle.readthedocs.io/en/latest/installation.html#install-oracle-instant-client
+- `pip3 install pycrypto`
 
 #### 코드
 

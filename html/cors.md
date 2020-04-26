@@ -1,7 +1,7 @@
 # ABOUT CORS (Cross-Origin Resource Sharing)
 
 ### 개요 
-Same Origin Policy 제약을 피하는 
+Same Origin Policy 제약을 피하는 방법.
 
 Document내 HTTP 요청은 기본적으로 Cross-Site HTTP Requests가 가능하다.
 

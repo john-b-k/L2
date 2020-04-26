@@ -1,19 +1,19 @@
-# ABOUT CORS
+# ABOUT CORS (Cross-Origin Resource Sharing)
 
 ### 개요
 
-HTTP 요청은 기본적으로 Cross-Site HTTP Requests가 가능하다.
+Document내 HTTP 요청은 기본적으로 Cross-Site HTTP Requests가 가능하다.
 
-다시 말하면, <img> 태그로 다른 도메인의 이미지 파일을 가져오거나, <link> 태그로 다른 도메인의 CSS를 가져오거나, <script> 태그로 다른 도메인의 JavaScript 라이브러리를 가져오는 것이 모두 가능하다.
+다시 말하면, <img> 태그로 다른 도메인의 이미지 파일을 가져오거나, <link> 태그로 다른 도메인의 CSS를 가져오거나, <script> 태그로 다른 도메인의 JavaScript 라이브러리를 가져오는 것이 모두 가능하다.(embedding)
 
-하지만 <script></script>로 둘러싸여 있는 스크립트에서 생성된 Cross-Site HTTP Requests는 Same Origin Policy를 적용 받기 때문에 Cross-Site HTTP Requests가 불가능하다.
+하지만 <script></script>로 둘러싸여 있는 스크립트에서 생성된 Cross-Site HTTP Requests는 Same Origin(scheme, domain, port) Policy를 적용 받기 때문에 Cross-Site HTTP Requests가 불가능하다.
 
 - CORS는 W3C스펙, BROWSER의 Cross Domain Communication 허용을 위한.
 - XMLHttpRequest객체를 개발자가 same-domain request롤 활용할 수 있게 허용.(same-origin policy 회피)
 
 간단한 예  
-- bob.com 이 alice.com 에 접근하고 싶다. (same-origin policy에 의해 허용되지 않는 상황)
-- 그러나, CORS 요청을 지원하고, alice.com도 응답으로 특정 Header을 보낸다면, bob.com이 접근가능
+- bob.com 이 alice.com 에 접근하고 싶다.(bob.com 도큐먼트에서 alice.com로 xhr요청) (same-origin policy에 의해 허용되지 않는 상황)
+- 그러나, CORS 요청을 지원하고, alice.com도 응답으로 특정 Header(Access-Control-Allow-Origin)을 보낸다면, bob.com이 접근가능
 - Client는 cross-origin request를 만들어야하고 (브라우저가 함)
 - Server 에서도 CORS-support 설정을 해야한다.
 

@@ -2,6 +2,7 @@
 
 ### 개요 
 Same Origin Policy 제약을 피하는 방법.
+(document.origin 의 출처를 리소스가 다른 출처의 리소스와 상호작용하는것 제한)
 
 Document내 HTTP 요청은 기본적으로 Cross-Site HTTP Requests가 가능하다.
 

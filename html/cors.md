@@ -105,16 +105,16 @@ function makeCORSRequest(){
 
 1. Simple Reuqest 는  
 HTTP METHOD : HEAD GET POST  
-HTTP HEADER : Accept, Accept-Language, Content-Language, Last-Event-ID, Content-Type(only application/x-www-form-urlencoded, multipart/form-data, text/plain)    
-일 경우.  
+HTTP HEADER : Accept, Accept-Language, Content-Language, Last-Event-ID, Content-Type(only application/x-www-form-urlencoded, multipart/form-data, text/plain), 커스텀헤더 불가    
+일 경우.(1회만 요청)  
 예)JSON-P corss-domain GET 요청, HTML from POST 요청 경우
 위 조건을 만족하지 않으면   not-so-simple
 
 2. not-so-simple Request는  
-- preflight, actual request로 구성된다
+- preflight, actual request로 구성된다(2회 요청)
 
 
-#### Handling a simple Request
+#### 1. Handling a simple Request
 GET JS 요청
 ```javascript
 var url = 'http://otherdomain.com/cors';
@@ -126,8 +126,8 @@ HTTP Request
 
 ```
 GET /cors HTTP/1.1
-Origin: http://otherdomain.com/cors    //CORS요청에 항상있는 헤더(scheme+domain+port) 브라우저 영역, 유저가 컨트롤 불가
-Host: api.alice.com                   //요청을 보낼 서버
+Origin: api.alice.com     //CORS요청에 항상있는 헤더(scheme+domain+port) 브라우저 영역, 유저가 컨트롤 불가
+Host: http://otherdomain.com/cors                  //요청을 보낼 서버
 Accept-Language: en-US
 Connection: keep-alive
 User-Agent: Mozilla/5.0...
@@ -143,7 +143,7 @@ Host: api.bob.com
 <strong>same-origin request에서 브라우저는 CORS 응답을 기대하지는 않는다</strong>
 
 ```
-Access-Control-Allow-Origin: http://otherdomain.com    //요청 Origin이 여기에 포함되지 않으면 서버는 물론 에러를 보냄
+Access-Control-Allow-Origin: api.alice.com    //요청 Origin이 여기에 포함되지 않으면 서버는 물론 에러를 보냄
 Access-Control-Allow-Credentials: true
 Access-Control-Expose-Headers: FooBar
 Content-Type: text/html; charset=utf-8
@@ -160,8 +160,8 @@ ture로 세팅 (XMLHttpRequest2 객체 withCredentials 값도 true로 ...)
 클라이언트는 XMLHttpRequest2.getResponseHeader()메서드로 위 헤더에서 리스팅된 CORS 응답 헤더에 접근 할 수 있다
 
 
-#### Handling a not-so-simple Request
-에) PUT or DELETE , content-type : application/json 인 경우  
+#### 2. Handling a not-so-simple Request
+에) PUT , content-type : application/json  인 경우  
 하나의 요청으로 보이지만, 실제로 2개의 요청으로 구성된다
 1. browser 가  preflight 요청을 보낸다 : 서버에 실제 요청(actual request)를 만들어도 되는지 물어보는 행위
 2. actual request :  grant되면 실제 요청 보낸다  
